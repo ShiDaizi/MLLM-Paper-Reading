@@ -1,6 +1,11 @@
 # MLLM-Paper-Reading
 This is a paper reading repository for recording my list of read papers.
 
+## 📖 Table of Contents
+- [MLLM-Paper-Reading](#mllm-paper-reading)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [Image LLMs](#image-llms)
+
 ## Image LLMs
 - [x] **LLaVA-Critic**: Learning to Evaluate Multimodal Models. CVPR2025 [Paper](https://arxiv.org/abs/2410.02712) [Page](https://llava-vl.github.io/blog/2024-10-03-llava-critic/)
   
