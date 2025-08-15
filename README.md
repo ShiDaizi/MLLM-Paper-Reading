@@ -5,6 +5,7 @@ This is a paper reading repository for recording my list of read papers.
 - [MLLM-Paper-Reading](#mllm-paper-reading)
   - [📖 Table of Contents](#-table-of-contents)
   - [Image LLMs CVPR2025](#image-llms-cvpr2025)
+  - [Benchmark CVPR2025](#benchmarks-cvpr2025)
 
 ## Image LLMs CVPR2025
 - [x] **LLaVA-Critic**: Learning to Evaluate Multimodal Models. CVPR2025 [Paper](https://arxiv.org/abs/2410.02712) [Page](https://llava-vl.github.io/blog/2024-10-03-llava-critic/)
@@ -12,7 +13,7 @@ This is a paper reading repository for recording my list of read papers.
   本文介绍了 LLaVA-Critic，这是首个开源大型多模态模型（LMM），其设计定位为通用评估器，可用于评估各类多模态任务的性能。该模型在高质量的 “评估指令遵循数据集” 上训练而成，该数据集包含 4.6 万张图像和 11.3 万个评估样本（涵盖逐点评估和 pairwise 评估两种设置），并在两个关键领域展现出有效性。
 
 - [x] **Img-Diff**: Contrastive Data Synthesis for Multimodal Large Language Models. CVPR2025 [Paper](https://arxiv.org/abs/2408.04594) [Code](https://github.com/modelscope/data-juicer/tree/ImgDiff)
-  
+
   为提升多模态大型语言模型（MLLMs）的细粒度图像识别能力，研究团队提出名为Img-Diff的新型对比性数据合成方法，该方法受对比学习和图像差异描述启发，通过生成强调物体变化的相似图像对，借助差异区域生成器定位物体差异、差异描述生成器阐述差异，构建出可自动扩展的 “物体替换” 样本数据集；利用该数据集微调 InternVL2 等当前最优（SOTA）MLLMs，在图像差异任务和视觉问答（VQA）任务上实现显著性能提升，尤其在 MMVP 基准测试中大幅优于 GPT-4V、Gemini 等现有 SOTA 模型，同时团队已公开代码和数据集以推动相关研究。
 
 
@@ -107,15 +108,36 @@ This is a paper reading repository for recording my list of read papers.
 
 
 ## Benchmarks CVPR2025
-- [ ] **Video-MME**: The First-Ever Comprehensive Evaluation Benchmark of Multi-modal LLMs in Video Analysis [Paper](https://arxiv.org/abs/2405.21075) [Code](https://github.com/BradyFU/Video-MME)
-- [ ] **MLVU**: Benchmarking Multi-task Long Video Understanding [Paper](https://arxiv.org/abs/2406.04264) [Code](https://github.com/JUNJIE99/MLVU)
-- [ ] **MMVU**: Measuring Expert-Level Multi-Discipline Video Understanding [Paper](https://arxiv.org/abs/2501.12380) [Code](https://github.com/yale-nlp/MMVU)
-- [ ] **MV-MATH**: Evaluating Multimodal Math Reasoning in Multi-Visual Contexts [Paper](https://arxiv.org/abs/2502.20808) [Page](https://eternal8080.github.io/MV-MATH.github.io/)
-- [ ] **VideoAutoArena**: An Automated Arena for Evaluating Large Multimodal Models in Video Analysis through User Simulation [Paper](https://arxiv.org/abs/2411.13281) [Code](https://github.com/VideoAutoArena/VideoAutoArena)
-- [ ] **OVBench**: How Far is Your Video-LLMs from Real-World Online Video Understanding? [Paper](https://arxiv.org/pdf/2501.05510) [Code](https://github.com/JoeLeelyf/OVO-Bench?tab=readme-ov-file)
-- [ ] **ECBench**: Can Multi-modal Foundation Models Understand the Egocentric World? A Holistic Embodied Cognition Benchmark [Paper](https://arxiv.org/abs/2501.05031) [Code](https://github.com/Rh-Dang/ECBench)
-- [ ] Localizing Events in Videos with Multimodal Queries [Paper](https://arxiv.org/abs/2406.10079) [Code](https://github.com/icq-benchmark/icq-benchmark)
-- [ ] **ICQ**: Is `Right' Right? Enhancing Object Orientation Understanding in Multimodal Language Models through Egocentric Instruction Tuning [Paper](https://arxiv.org/abs/2411.16761) [Code](https://github.com/jhCOR/EgoOrientBench)
+- [x] **Video-MME**: The First-Ever Comprehensive Evaluation Benchmark of Multi-modal LLMs in Video Analysis [Paper](https://arxiv.org/abs/2405.21075) [Code](https://github.com/BradyFU/Video-MME)
+
+  本文提出Video-MME—— 首个针对多模态大语言模型（MLLMs）视频分析的全面评估基准，其核心优势包括：覆盖6 个主视觉领域及 30 个子领域的视频类型多样性、包含11 秒至 1 小时短 / 中 / 长时长的时间维度完整性、整合视频帧 + 字幕 + 音频的多模态数据广度，以及专家人工标注的高质量标注；通过该基准评估各类主流 MLLMs 发现，Gemini 1.5 Pro是表现最佳的商业模型（平均准确率 75%），显著优于GPT-4o（71.9%）及开源模型（如 VILA-1.5 准确率 59%），同时证实字幕和音频可显著提升视频理解能力（Gemini 1.5 Pro 加字幕提升 6.2%、加音频提升 4.3%），且所有模型均存在随视频时长增加性能下降的问题，为 MLLM 视频理解能力的未来优化提供方向。
+
+- [x] **MLVU**: Benchmarking Multi-task Long Video Understanding [Paper](https://arxiv.org/abs/2406.04264) [Code](https://github.com/JUNJIE99/MLVU)
+  
+  本文提出MLVU（Multitask Long Video Understanding Benchmark）—— 首个针对多模态大语言模型（MLLMs）长视频理解能力的多任务评估基准，旨在解决现有基准视频长度不足（多为几秒至几分钟）、类型与任务单一、不适配长视频评估的问题。MLVU 核心优势包括：覆盖3 分钟至 2 小时（平均 15 分钟）的灵活视频时长、包含电影 / 监控 / 第一视角等10 类视频类型、设计9 类针对性任务（分整体 / 单细节 / 多细节 LVU 任务，任务格式含两种：①多选择题，开发集 4 个选项、测试集 6 个选项，评估指标为准确率；②生成题，含视频总结、子场景描述，通过 GPT-4 从 “准确性 / 相关性”（子场景描述）或 “完整性 / 可靠性”（视频总结）维度打分，满分 10 分）；通过评估 23 个主流 MLLMs 发现，GPT-4o表现最优（多选择任务平均准确率 54.5%，生成任务平均 5.87 分），开源长视频 MLLMs（如 LLaVA-Onevision）与商业模型差距缩小（仅差 2.8%），但所有模型均存在随视频时长增加性能显著下降的问题，且多细节任务（如动作排序、计数）仍是普遍瓶颈；研究同时揭示上下文长度、图像理解能力、LLM backbone是影响长视频理解的关键因素，为未来 MLLM 优化提供方向。
+
+- [x] **MMVU**: Measuring Expert-Level Multi-Discipline Video Understanding [Paper](https://arxiv.org/abs/2501.12380) [Code](https://github.com/yale-nlp/MMVU)
+
+  Zhao 等人（2025）提出MMVU（专家级多学科视频理解基准），这是一个用于评估基础模型视频理解能力的综合基准，包含3,000 个专家标注问题，覆盖4 个核心学科（科学、医疗、人文社科、工程）下的27 个细分领域，基于1,529 个专业领域视频构建。与现有基准相比，MMVU 的核心优势在于：要求模型应用领域特定知识进行专家级推理（而非基础视觉感知）、所有示例由人类专家从零标注并通过严格质量控制、每个示例附带专家标注的推理依据和领域知识。研究对32 个前沿多模态基础模型进行评估，发现具备 System-2 思维的o1 模型和Gemini 2.0 Flash Thinking 模型表现最佳，但仍未达到人类专家水平（开放书设置下人类准确率 86.8%，顶级模型 o1 测试集平均准确率 77.0%）；通过误差分析，识别出模型在视觉感知、领域知识应用等方面的关键不足，为后续研究提供方向。
+
+- [x] **MV-MATH**: Evaluating Multimodal Math Reasoning in Multi-Visual Contexts [Paper](https://arxiv.org/abs/2502.20808) [Page](https://eternal8080.github.io/MV-MATH.github.io/)
+
+  Wang 等人（2025）提出MV-MATH（多视觉语境下的多模态数学推理评估基准），这是一个针对多模态大语言模型（MLLMs）多视觉数学推理能力的高质量基准，包含2,009 个源于真实 K-12 场景的多图像数学问题，覆盖3 个难度等级（简单 27%、中等 48%、困难 25%）和11 个数学学科，问题类型分为选择题（1,109 题）、自由作答题（900 题，含 100 道多步骤题）。与现有单视觉数学基准不同，MV-MATH 首次聚焦多视觉语境，将图像按关联性分为 “相互依赖型（MD，1,412 题）” 和 “独立型（ID，597 题）”，并附带细粒度标注。通过对25 个 MLLMs（18 个开源 + 7 个闭源）的评估发现，顶级模型Claude 3.5-Sonnet准确率仅 33.9%，远低于人类水平（76.5%）；开源模型中LLaVA-OneVision-72B表现最佳（26.2%），且图像序列输入优于合并输入，CoT 提示对自由作答题有效但对选择题可能起反作用。误差分析显示，视觉感知误差（42%） 是模型最主要的错误类型，为后续模型优化提供关键方向。
+
+- [x] **VideoAutoArena**: An Automated Arena for Evaluating Large Multimodal Models in Video Analysis through User Simulation [Paper](https://arxiv.org/abs/2411.13281) [Code](https://github.com/VideoAutoArena/VideoAutoArena)
+
+  Luo 等人（2025）提出VideoAutoArena，这是一个用于自动评估多模态大模型（LMMs）视频分析能力的竞技场式基准，旨在解决传统选择题基准（如 VideoMME、LongVideoBench）与真实用户需求脱节及人类标注成本高（每小时仅 7 个样本）的问题。该基准通过用户模拟（生成 3 类关联度不同的用户角色及开放式问题）、peer battles（随机抽取两模型对决）、自动判断（以 GPT-4o 为裁判，与人类判断一致性达 87.29%）、故障驱动进化（基于模型错误生成更难问题）四大核心组件实现自动化，并采用改进的ELO 评分系统对模型排名。实验基于 2,881 个平均时长 479 秒的视频（覆盖 10 类场景、4 个时长区间）评估 11 个 SOTA LMMs，发现GPT-4o以 ELO 1505.69 居首，开源模型中Aria表现最佳（ELO 1119.99）但与闭源模型差距显著（-385.7）；同时配套推出VideoAutoBench（基于人类标注子集，用 GPT-4o 快速评估），其排名与 VideoAutoArena 高度一致，共同构成低成本、可扩展的用户中心型视频分析评估框架。
+
+- [x] **OVBench**: How Far is Your Video-LLMs from Real-World Online Video Understanding? [Paper](https://arxiv.org/pdf/2501.05510) [Code](https://github.com/JoeLeelyf/OVO-Bench?tab=readme-ov-file)
+
+  Li 等人（2025）提出OVO-Bench（Online-VideO-Benchmark），这是首个聚焦在线视频理解的基准，旨在评估 Video-LLMs 的时间感知能力（基于提问时间戳动态推理），弥补现有离线基准（如 VideoMME、LongVideoBench）无法模拟真实实时场景的缺陷。该基准包含644 个独特视频（覆盖 7 大领域，时长从数分钟到 30 分钟）和2,814 个带精确时间戳的元标注，通过 “回溯追踪（Backward Tracing）、实时视觉感知（Real-Time Visual Perception）、前瞻主动响应（Forward Active Responding）” 三大核心场景，设计 12 类任务评估模型能力。实验对 11 个 SOTA Video-LLMs（含闭源模型 GPT-4o、Gemini 1.5 Pro 及开源模型 Qwen2-VL、LLaVA-OneVision 等）评估发现，即使顶级闭源模型（如 Gemini 1.5 Pro 整体准确率 63.00%）也远低于人类水平（92.81%），且开源模型与闭源模型差距显著（顶级开源模型 Aria 整体准确率 57.15%）；同时，现有模型存在时间优先级缺失（如 Gemini 1.5 Pro 在空间理解任务仅 58.43% 准确率）、幻觉严重（开源模型幻觉检测准确率普遍低于 30%）、推理延迟高（64 帧输入时平均响应需 4 秒）三大核心问题，为在线 Video-LLMs 的发展提供关键评估依据。
+
+- [x] **ECBench**: Can Multi-modal Foundation Models Understand the Egocentric World? A Holistic Embodied Cognition Benchmark [Paper](https://arxiv.org/abs/2501.05031) [Code](https://github.com/Rh-Dang/ECBench)
+- [x] Localizing Events in Videos with Multimodal Queries [Paper](https://arxiv.org/abs/2406.10079) [Code](https://github.com/icq-benchmark/icq-benchmark)
+- [x] **ICQ**: Is `Right' Right? Enhancing Object Orientation Understanding in Multimodal Language Models through Egocentric Instruction Tuning [Paper](https://arxiv.org/abs/2411.16761) [Code](https://github.com/jhCOR/EgoOrientBench)
+
+  多模态大语言模型（MLLMs） 在物体朝向理解上存在显著不足，核心原因是训练数据（如 MS-COCO、LAION-5B）中物体朝向标注不一致（部分基于观察者视角、部分基于物体视角），导致其理解与用户意图错位。为解决该问题，作者提出以自我为中心的指令微调（Egocentric Instruction Tuning）：基于用户视角制定统一标注标准（将朝向分为 8 类），利用 ImageNet 手动标注数据生成三类指令数据（调用 MLLM 细节识别能力、LLM 先验知识、 orientation 关系理解），通过 LoRA 微调 LLM 与桥接层（冻结视觉编码器）；同时构建EgoOrientBench 基准（覆盖 ImageNet 等 5 个跨领域数据集、3 个梯度任务）。实验表明，微调后 MLLMs 的朝向理解显著提升（如 LLaVA-1.5 在 Choose 任务平均准确率从 17.9% 升至 33.7%），且在 MME、MMStar 等通用基准上性能无衰减，还能改善行人方向预测、空间推理等实际任务表现。
+  
 - [ ] **VidHalluc**: Evaluating Temporal Hallucinations in Multimodal Large Language Models for Video Understanding [Paper](https://arxiv.org/abs/2412.03735) [Page](https://vid-halluc.github.io/)
 - [ ] **VidComposition**: Can MLLMs Analyze Compositions in Compiled Video? [Paper](https://arxiv.org/abs/2411.10979v1) [Code](https://github.com/yunlong10/VidComposition)
 - [ ] Unveiling the Ignorance of MLLMs: Seeing Clearly, Answering Incorrectly [Paper](https://arxiv.org/abs/2406.10638)
