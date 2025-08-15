@@ -137,14 +137,23 @@ This is a paper reading repository for recording my list of read papers.
 - [x] **ICQ**: Is `Right' Right? Enhancing Object Orientation Understanding in Multimodal Language Models through Egocentric Instruction Tuning [Paper](https://arxiv.org/abs/2411.16761) [Code](https://github.com/jhCOR/EgoOrientBench)
 
   多模态大语言模型（MLLMs） 在物体朝向理解上存在显著不足，核心原因是训练数据（如 MS-COCO、LAION-5B）中物体朝向标注不一致（部分基于观察者视角、部分基于物体视角），导致其理解与用户意图错位。为解决该问题，作者提出以自我为中心的指令微调（Egocentric Instruction Tuning）：基于用户视角制定统一标注标准（将朝向分为 8 类），利用 ImageNet 手动标注数据生成三类指令数据（调用 MLLM 细节识别能力、LLM 先验知识、 orientation 关系理解），通过 LoRA 微调 LLM 与桥接层（冻结视觉编码器）；同时构建EgoOrientBench 基准（覆盖 ImageNet 等 5 个跨领域数据集、3 个梯度任务）。实验表明，微调后 MLLMs 的朝向理解显著提升（如 LLaVA-1.5 在 Choose 任务平均准确率从 17.9% 升至 33.7%），且在 MME、MMStar 等通用基准上性能无衰减，还能改善行人方向预测、空间推理等实际任务表现。
+
+- [x] **VidHalluc**: Evaluating Temporal Hallucinations in Multimodal Large Language Models for Video Understanding [Paper](https://arxiv.org/abs/2412.03735) [Page](https://vid-halluc.github.io/)
+
+  针对多模态大语言模型（MLLMs）在视频理解中存在的时间幻觉问题（动作误判、时序错乱、场景转换误读），现有基准存在规模小、侧重静态内容、问题类型单一的局限，本文提出VIDHALLUC—— 当前最大的视频幻觉评估基准，包含5,002 个视频与9,295 个 QA 对，聚焦动作（ACH）、时间序列（TSH）、场景转换（STH） 三类幻觉；同时提出DINO-HEAL，一种无需训练的方法，通过 DINOv2 提取的空间显著性图重加权视觉编码器（如 CLIP）特征，增强关键区域关注，在 VIDHALLUC 上实现平均 3.02% 的幻觉缓解提升，其中对时间序列幻觉改善最显著（如 VideoLLaMA2 提升 18.33%）。实验表明，多数 MLLMs（含开源与闭源）在三类幻觉上均存在漏洞，GPT-4o 表现最优但仍低于人类，DINO-HEAL 可兼容多种视觉编码器，为资源受限场景提供高效解决方案。
+
+- [x] **VidComposition**: Can MLLMs Analyze Compositions in Compiled Video? [Paper](https://arxiv.org/abs/2411.10979v1) [Code](https://github.com/yunlong10/VidComposition)
+- [x] Unveiling the Ignorance of MLLMs: Seeing Clearly, Answering Incorrectly [Paper](https://arxiv.org/abs/2406.10638)
+
+  该研究揭示了多模态大型语言模型（MLLMs）能准确理解视觉内容却对误导性 “负面问题” 回答错误的现象，为此手动构建了包含12 类问题、1786 个样本（893 个正向问题 + 893 个负向问题）的 MMVU 基准，并提出 “误导率（MR）” 和 “鲁棒性准确率（RA）” 作为评估指标；通过分析发现问题根源在于现有训练数据集偏正向样本、模型对视觉 token 注意力远低于系统 / 问题 token，进而提出两种解决方案：一是构建含112k 正负样本对的 MMVU-Train 数据集，二是设计 “内容引导优化（CGR）” 和 “视觉注意力优化（VAR）” 策略；实验显示，该方案显著提升模型鲁棒性，例如 GPT-4o 在 MMVU 测试集上 RA 达65.06%，MMVU-Train 可使 VILA1.5-13B 的 RA 提升11.98%、MR 降低17.28%。
+
+- [x] **VL-RewardBench**: A Challenging Benchmark for Vision-Language Generative Reward Models [Paper](https://arxiv.org/abs/2411.17451) [Page](https://vl-rewardbench.github.io/)
+- [x] Benchmarking Large Vision-Language Models via Directed Scene Graph for Comprehensive Image Captioning [Paper](https://arxiv.org/abs/2412.08614) [Code](https://github.com/LuFan31/CompreCap)
+- [x] **OpenING**: A Comprehensive Benchmark for Judging Open-ended Interleaved Image-Text Generation [Paper](https://arxiv.org/abs/2411.18499) [Code](https://github.com/LanceZPF/OpenING)
+- [x] Automated Generation of Challenging Multiple-Choice Questions for Vision Language Model Evaluation [Paper](https://arxiv.org/abs/2501.03225) [Page](https://yuhui-zh15.github.io/AutoConverter-Website/)
+
+  为解决现有视觉语言模型（VLMs）评估中开放式 VQA 基准评估不可靠的问题（规则 - based 方法与真实性能相关性仅 0.09，模型 - based 方法因版本更新分数波动达 6%），研究团队提出AutoConverter 多智能体框架，通过 Proposer（生成 5 类错误干扰项）、Reviewer（迭代反馈）、Selector（筛选难题）、Evaluator（5 分制正确性评分）、Refiner（迭代优化），自动将开放式问题转为多选题，保证正确性（仅 3% 高评分题错误）且提升难度（VLMs 准确率与人类题相当或更低）；基于此构建VMCBench 基准（20 个数据集转化 / 优化，共 9,018 题，覆盖通用理解、推理、OCR、文档图表 4 类任务），对 33 个 SOTA VLMs 评估发现，Qwen2-VL-72B（85.0%）表现最优，超越 GPT-4o（80.3%），且公私模型差距缩小、VLM 性能随规模提升，为 VLMs 提供可扩展、一致的评估新标准。
   
-- [ ] **VidHalluc**: Evaluating Temporal Hallucinations in Multimodal Large Language Models for Video Understanding [Paper](https://arxiv.org/abs/2412.03735) [Page](https://vid-halluc.github.io/)
-- [ ] **VidComposition**: Can MLLMs Analyze Compositions in Compiled Video? [Paper](https://arxiv.org/abs/2411.10979v1) [Code](https://github.com/yunlong10/VidComposition)
-- [ ] Unveiling the Ignorance of MLLMs: Seeing Clearly, Answering Incorrectly [Paper](https://arxiv.org/abs/2406.10638)
-- [ ] **VL-RewardBench**: A Challenging Benchmark for Vision-Language Generative Reward Models [Paper](https://arxiv.org/abs/2411.17451) [Page](https://vl-rewardbench.github.io/)
-- [ ] Benchmarking Large Vision-Language Models via Directed Scene Graph for Comprehensive Image Captioning [Paper](https://arxiv.org/abs/2412.08614) [Code](https://github.com/LuFan31/CompreCap)
-- [ ] **OpenING**: A Comprehensive Benchmark for Judging Open-ended Interleaved Image-Text Generation [Paper](https://arxiv.org/abs/2411.18499) [Code](https://github.com/LanceZPF/OpenING)
-- [ ] Automated Generation of Challenging Multiple-Choice Questions for Vision Language Model Evaluation [Paper](https://arxiv.org/abs/2501.03225) [Page](https://yuhui-zh15.github.io/AutoConverter-Website/)
-- [ ] **VideoChat-Online**: Towards Online Spatial-Temporal Video Understanding via Large Video Language Models [Paper](https://arxiv.org/abs/2501.00584v1) [Page](https://videochat-online.github.io/)
-- [ ] **ODE**: Open-Set Evaluation of Hallucinations in Multimodal Large Language Models [Paper](https://arxiv.org/abs/2409.09318)
-- [ ] **VideoEspresso**: A Large-Scale Chain-of-Thought Dataset for Fine-Grained Video Reasoning via Core Frame Selection [Paper](https://arxiv.org/abs/2411.14794v1) [Code](https://github.com/hshjerry/VideoEspresso)
+- [x] **VideoChat-Online**: Towards Online Spatial-Temporal Video Understanding via Large Video Language Models [Paper](https://arxiv.org/abs/2501.00584v1) [Page](https://videochat-online.github.io/)
+- [x] **ODE**: Open-Set Evaluation of Hallucinations in Multimodal Large Language Models [Paper](https://arxiv.org/abs/2409.09318)
+- [x] **VideoEspresso**: A Large-Scale Chain-of-Thought Dataset for Fine-Grained Video Reasoning via Core Frame Selection [Paper](https://arxiv.org/abs/2411.14794v1) [Code](https://github.com/hshjerry/VideoEspresso)
