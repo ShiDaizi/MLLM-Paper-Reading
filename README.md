@@ -9,11 +9,12 @@ This is a paper reading repository for recording my list of read papers.
 ## Image LLMs CVPR2025
 - [x] **LLaVA-Critic**: Learning to Evaluate Multimodal Models. CVPR2025 [Paper](https://arxiv.org/abs/2410.02712) [Page](https://llava-vl.github.io/blog/2024-10-03-llava-critic/)
   
-  This paper introduces LLaVA-Critic, the first open-source large multimodal model (LMM) designed as a generalist evaluator for assessing performance across various multimodal tasks. Trained on a high-quality critic instruction-following dataset comprising 46k images and 113k evaluation samples (including both pointwise and pairwise settings), LLaVA-Critic demonstrates effectiveness in two key areas. Firstly, as an LMM-as-a-Judge, it provides reliable evaluation scores, achieving performance on par with or surpassing GPT models across multiple benchmarks, with high correlation with GPT-4o in instance-level scoring and model-level ranking. Secondly, in preference learning, it generates effective reward signals for iterative Direct Preference Optimization (DPO), outperforming human feedback-based reward models in enhancing model alignment capabilities. The model, built by fine-tuning LLaVA-OneVision, preserves original visual capabilities while offering a cost-effective, open-source alternative to commercial evaluators, supporting tasks like visual chat, detailed description, and hallucination detection. This work highlights the potential of open-source LMMs in self-critique and evaluation, paving the way for scalable alignment feedback mechanisms.
+  本文介绍了 LLaVA-Critic，这是首个开源大型多模态模型（LMM），其设计定位为通用评估器，可用于评估各类多模态任务的性能。该模型在高质量的 “评估指令遵循数据集” 上训练而成，该数据集包含 4.6 万张图像和 11.3 万个评估样本（涵盖逐点评估和 pairwise 评估两种设置），并在两个关键领域展现出有效性。
 
 - [x] **Img-Diff**: Contrastive Data Synthesis for Multimodal Large Language Models. CVPR2025 [Paper](https://arxiv.org/abs/2408.04594) [Code](https://github.com/modelscope/data-juicer/tree/ImgDiff)
+  
+  为提升多模态大型语言模型（MLLMs）的细粒度图像识别能力，研究团队提出名为Img-Diff的新型对比性数据合成方法，该方法受对比学习和图像差异描述启发，通过生成强调物体变化的相似图像对，借助差异区域生成器定位物体差异、差异描述生成器阐述差异，构建出可自动扩展的 “物体替换” 样本数据集；利用该数据集微调 InternVL2 等当前最优（SOTA）MLLMs，在图像差异任务和视觉问答（VQA）任务上实现显著性能提升，尤其在 MMVP 基准测试中大幅优于 GPT-4V、Gemini 等现有 SOTA 模型，同时团队已公开代码和数据集以推动相关研究。
 
-  This paper introduces Img-Diff, a novel contrastive data synthesis method designed to enhance fine-grained image recognition capabilities in Multimodal Large Language Models (MLLMs). The approach generates high-quality datasets of "object replacement" samples by creating pairs of similar images with subtle object variations, identifying difference regions via a Difference Area Generator, and producing precise difference descriptions using a Difference Captions Generator. The resulting Img-Diff dataset, comprising 12,688 instances, effectively improves MLLMs' performance when used for fine-tuning. Experimental results show that fine-tuned models (e.g., LLaVA-1.5-7B, MGM-7B, InternVL2-8B) achieve significant gains on image difference benchmarks, with MGM-7B surpassing state-of-the-art models like GPT-4V and Gemini by up to 12 points on the MMVP benchmark. Additionally, the models demonstrate an average improvement of 3.06% across eight MLLM benchmarks, validating the dataset's ability to enhance both image difference recognition and overall visual understanding. The dataset exhibits high quality (over 70% accurate difference descriptions) and diversity (covering 1,203 object categories), offering valuable insights for multimodal data synthesis.
 
 - [x] **FlashSloth**: Lightning Multimodal Large Language Models via Embedded Visual Compression. CVPR2025 [Paper](https://arxiv.org/abs/2412.04317) [Code](https://github.com/codefanw/FlashSloth)
   
@@ -103,3 +104,25 @@ This is a paper reading repository for recording my list of read papers.
 - [x] **VisionZip**: Longer is Better but Not Necessary in Vision Language Models. CVPR2025 [Paper](https://arxiv.org/abs/2412.04467) [Code](https://github.com/dvlab-research/VisionZip)
 
   论文提出VisionZip，一种简单高效的视觉令牌压缩方法，旨在解决视觉语言模型（VLMs）中视觉令牌冗余（CLIP/SigLIP 生成的令牌中仅少数含高信息）导致的高计算成本问题。其核心是训练无关的令牌筛选与合并策略：先基于视觉编码器注意力得分选择主导令牌（Dominant Tokens）（含核心信息），再通过语义相似性合并剩余令牌生成上下文令牌（Contextual Tokens），同时可通过 30 分钟微调投影层（仅用 1/10 LLaVA-1.5 数据）进一步对齐模态空间。实验显示，VisionZip 在 LLaVA-1.5/NeXT、Mini-Gemini 等模型上，保留 95% 性能的同时减少 88.9% 视觉令牌，预填充时间提升 8 倍，使 LLaVA-NeXT 13B 推理速度超 7B 模型且精度更高，在视频理解（Video-LLaVA）和多轮对话场景中也显著优于 FastV、SparseVLM 等 SOTA 方法。
+
+
+## Benchmarks CVPR2025
+- [ ] **Video-MME**: The First-Ever Comprehensive Evaluation Benchmark of Multi-modal LLMs in Video Analysis [Paper](https://arxiv.org/abs/2405.21075) [Code](https://github.com/BradyFU/Video-MME)
+- [ ] **MLVU**: Benchmarking Multi-task Long Video Understanding [Paper](https://arxiv.org/abs/2406.04264) [Code](https://github.com/JUNJIE99/MLVU)
+- [ ] **MMVU**: Measuring Expert-Level Multi-Discipline Video Understanding [Paper](https://arxiv.org/abs/2501.12380) [Code](https://github.com/yale-nlp/MMVU)
+- [ ] **MV-MATH**: Evaluating Multimodal Math Reasoning in Multi-Visual Contexts [Paper](https://arxiv.org/abs/2502.20808) [Page](https://eternal8080.github.io/MV-MATH.github.io/)
+- [ ] **VideoAutoArena**: An Automated Arena for Evaluating Large Multimodal Models in Video Analysis through User Simulation [Paper](https://arxiv.org/abs/2411.13281) [Code](https://github.com/VideoAutoArena/VideoAutoArena)
+- [ ] **OVBench**: How Far is Your Video-LLMs from Real-World Online Video Understanding? [Paper](https://arxiv.org/pdf/2501.05510) [Code](https://github.com/JoeLeelyf/OVO-Bench?tab=readme-ov-file)
+- [ ] **ECBench**: Can Multi-modal Foundation Models Understand the Egocentric World? A Holistic Embodied Cognition Benchmark [Paper](https://arxiv.org/abs/2501.05031) [Code](https://github.com/Rh-Dang/ECBench)
+- [ ] Localizing Events in Videos with Multimodal Queries [Paper](https://arxiv.org/abs/2406.10079) [Code](https://github.com/icq-benchmark/icq-benchmark)
+- [ ] **ICQ**: Is `Right' Right? Enhancing Object Orientation Understanding in Multimodal Language Models through Egocentric Instruction Tuning [Paper](https://arxiv.org/abs/2411.16761) [Code](https://github.com/jhCOR/EgoOrientBench)
+- [ ] **VidHalluc**: Evaluating Temporal Hallucinations in Multimodal Large Language Models for Video Understanding [Paper](https://arxiv.org/abs/2412.03735) [Page](https://vid-halluc.github.io/)
+- [ ] **VidComposition**: Can MLLMs Analyze Compositions in Compiled Video? [Paper](https://arxiv.org/abs/2411.10979v1) [Code](https://github.com/yunlong10/VidComposition)
+- [ ] Unveiling the Ignorance of MLLMs: Seeing Clearly, Answering Incorrectly [Paper](https://arxiv.org/abs/2406.10638)
+- [ ] **VL-RewardBench**: A Challenging Benchmark for Vision-Language Generative Reward Models [Paper](https://arxiv.org/abs/2411.17451) [Page](https://vl-rewardbench.github.io/)
+- [ ] Benchmarking Large Vision-Language Models via Directed Scene Graph for Comprehensive Image Captioning [Paper](https://arxiv.org/abs/2412.08614) [Code](https://github.com/LuFan31/CompreCap)
+- [ ] **OpenING**: A Comprehensive Benchmark for Judging Open-ended Interleaved Image-Text Generation [Paper](https://arxiv.org/abs/2411.18499) [Code](https://github.com/LanceZPF/OpenING)
+- [ ] Automated Generation of Challenging Multiple-Choice Questions for Vision Language Model Evaluation [Paper](https://arxiv.org/abs/2501.03225) [Page](https://yuhui-zh15.github.io/AutoConverter-Website/)
+- [ ] **VideoChat-Online**: Towards Online Spatial-Temporal Video Understanding via Large Video Language Models [Paper](https://arxiv.org/abs/2501.00584v1) [Page](https://videochat-online.github.io/)
+- [ ] **ODE**: Open-Set Evaluation of Hallucinations in Multimodal Large Language Models [Paper](https://arxiv.org/abs/2409.09318)
+- [ ] **VideoEspresso**: A Large-Scale Chain-of-Thought Dataset for Fine-Grained Video Reasoning via Core Frame Selection [Paper](https://arxiv.org/abs/2411.14794v1) [Code](https://github.com/hshjerry/VideoEspresso)
