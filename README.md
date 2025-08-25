@@ -4,8 +4,18 @@ This is a paper reading repository for recording my list of read papers.
 ## 📖 Table of Contents
 - [MLLM-Paper-Reading](#mllm-paper-reading)
   - [📖 Table of Contents](#-table-of-contents)
+  - [Hf Daily Paper](#huggingface-daily-paper)
   - [Image LLMs CVPR2025](#image-llms-cvpr2025)
   - [Benchmark CVPR2025](#benchmarks-cvpr2025)
+
+## HuggingFace Daily Paper
+- [x] **Chain-of-Agents**: End-to-End Agent Foundation Models via Multi-Agent Distillation and Agentic RL [Paper](https://arxiv.org/abs/2508.13167)
+
+  OPPO AI Agent Team 提出Chain-of-Agents (CoA) 这一新型 LLM 推理范式，实现单一模型内原生端到端复杂问题求解（模拟多智能体协作），并基于此训练出Agent Foundation Models (AFMs)；训练过程采用多智能体蒸馏框架（将顶尖多智能体系统能力提炼为 CoA 轨迹用于智能体监督微调）与智能体强化学习（在可验证任务上优化模型），实证显示 AFMs 在 Web Agent（如 GAIA 达55.3%、BrowseComp 达11.1%）、Code Agent（LiveCodeBench v5 达47.9%）及数学推理（AIME25 达59.8%）基准中刷新 SOTA，同时降低84.6% 推理成本，且模型权重、代码、数据均完全开源。
+
+- [x] **SSRL**: SELF-SEARCH REINFORCEMENT LEARNING [Paper](https://arxiv.org/abs/2508.10874)
+  
+  来自清华大学、上海 AI 实验室等机构的团队提出Self-Search范式，通过结构化提示与重复采样激活大语言模型（LLMs）的内在搜索能力，无需依赖外部搜索引擎即可实现信息检索任务，在 BrowseComp 等基准上展现出随推理预算提升的Pass@k 缩放特性；进一步提出SSRL（Self-Search Reinforcement Learning） 框架，通过格式奖励（确保推理轨迹结构化）与信息掩码（稳定训练）增强模型内部知识利用能力，实证显示 SSRL 训练的模型在 General QA（如 Llama-3.2-3B-Instruct 在 NQ 达43.8%）、Multi-Hop QA（Bamboogle 达38.4%）上超越 Search-R1、ZeroSearch 等外部搜索依赖型基线，同时实现5.53× 训练效率提升，并具备可靠的Sim2Real 迁移能力（接入真实搜索引擎后性能进一步提升，如 Qwen2.5-7B-Instruct 在 TQ 达65.0%），且与外部工具无缝兼容，为低成本 RL 智能体训练提供新路径。
 
 ## Image LLMs CVPR2025
 - [x] **LLaVA-Critic**: Learning to Evaluate Multimodal Models. CVPR2025 [Paper](https://arxiv.org/abs/2410.02712) [Page](https://llava-vl.github.io/blog/2024-10-03-llava-critic/)
