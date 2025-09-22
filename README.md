@@ -21,6 +21,8 @@ This is a paper reading repository for recording my list of read papers.
 ## Curated Paper List
 - [x] **Towards Omni-RAG**: Comprehensive Retrieval-Augmented Generation for Large Language Models in Medical Applications. ACL2025 [Paper](https://arxiv.org/abs/2501.02460)
 
+- [x] **Think or Not Think**: A Study of Explicit Thinking in Rule-Based Visual Reinforcement Fine-Tuning. Neurips 2025 Spotlight [Paper](https://arxiv.org/abs/2503.16188) 
+
 ## Image LLMs CVPR2025
 - [x] **LLaVA-Critic**: Learning to Evaluate Multimodal Models. CVPR2025 [Paper](https://arxiv.org/abs/2410.02712) [Page](https://llava-vl.github.io/blog/2024-10-03-llava-critic/)
   
